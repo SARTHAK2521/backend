@@ -1,0 +1,104 @@
+{
+  "undefined": [
+    {
+      "date": "2025-04-17T14:02:29.593Z",
+      "weight": 150,
+      "height": 180,
+      "age": 20,
+      "gender": "male",
+      "bmi": "46.3",
+      "category": "Obese",
+      "suggestion": "Consult a healthcare provider for a personalized plan. Focus on gradual weight loss through diet changes and increased activity."
+    },
+    {
+      "date": "2025-04-17T14:02:06.161Z",
+      "weight": 70,
+      "height": 180,
+      "age": 19,
+      "gender": "female",
+      "bmi": "21.6",
+      "category": "Normal weight",
+      "suggestion": "Maintain a balanced diet with fruits, vegetables, whole grains, lean proteins, and healthy fats. Stay hydrated and exercise regularly."
+    },
+    {
+      "date": "2025-04-17T13:29:58.192Z",
+      "weight": 75,
+      "height": 185,
+      "age": 20,
+      "gender": "male",
+      "bmi": "21.9",
+      "category": "Normal weight",
+      "suggestion": "Maintain a balanced diet with fruits, vegetables, whole grains, lean proteins, and healthy fats. Stay hydrated and exercise regularly."
+    },
+    {
+      "date": "2025-04-17T13:29:23.802Z",
+      "weight": 20,
+      "height": 100,
+      "age": 8,
+      "gender": "male",
+      "bmi": "20.0",
+      "category": "Normal weight",
+      "suggestion": "Maintain a balanced diet with fruits, vegetables, whole grains, lean proteins, and healthy fats. Stay hydrated and exercise regularly."
+    },
+    {
+      "date": "2025-04-17T13:27:23.439Z",
+      "weight": 20,
+      "height": 100,
+      "age": 8,
+      "gender": "male",
+      "bmi": "20.0",
+      "category": "Normal weight",
+      "suggestion": "Maintain a balanced diet with fruits, vegetables, whole grains, lean proteins, and healthy fats. Stay hydrated and exercise regularly."
+    },
+    {
+      "date": "2025-04-17T13:12:27.863Z",
+      "weight": 50,
+      "height": 160,
+      "age": 14,
+      "gender": "male",
+      "bmi": "19.5",
+      "category": "Normal weight",
+      "suggestion": "Maintain a balanced diet with fruits, vegetables, whole grains, lean proteins, and healthy fats. Stay hydrated and exercise regularly."
+    },
+    {
+      "date": "2025-04-17T13:12:17.235Z",
+      "weight": 50,
+      "height": 150,
+      "age": 15,
+      "gender": "male",
+      "bmi": "22.2",
+      "category": "Normal weight",
+      "suggestion": "Maintain a balanced diet with fruits, vegetables, whole grains, lean proteins, and healthy fats. Stay hydrated and exercise regularly."
+    },
+    {
+      "date": "2025-04-17T13:11:59.751Z",
+      "weight": 50,
+      "height": 150,
+      "age": 15,
+      "gender": "male",
+      "bmi": "22.2",
+      "category": "Normal weight",
+      "suggestion": "Maintain a balanced diet with fruits, vegetables, whole grains, lean proteins, and healthy fats. Stay hydrated and exercise regularly."
+    },
+    {
+      "date": "2025-04-17T13:04:01.572Z",
+      "weight": 80,
+      "height": 190,
+      "age": 20,
+      "gender": "male",
+      "bmi": "22.2",
+      "category": "Normal weight",
+      "suggestion": "Maintain a balanced diet with fruits, vegetables, whole grains, lean proteins, and healthy fats. Stay hydrated and exercise regularly."
+    },
+    {
+      "date": "2025-04-17T13:03:07.350Z",
+      "weight": 80,
+      "height": 190,
+      "age": 20,
+      "gender": "male",
+      "bmi": "22.2",
+      "category": "Normal weight",
+      "suggestion": "Maintain a balanced diet with fruits, vegetables, whole grains, lean proteins, and healthy fats. Stay hydrated and exercise regularly."
+    }
+  ]
+}

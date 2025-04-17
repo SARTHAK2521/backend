@@ -572,12 +572,14 @@
             </div>
             <nav class="nav-links">
                 <a href="#"><i class="fas fa-home"></i> Home</a>
-                <a href="#"><i class="fas fa-chart-line"></i> Analytics</a>
+                <a href="#analytics-section" class="analytics-link">
+                    <i class="fas fa-chart-line"></i> Analytics
+                </a>
                 <a href="/schedule"><i class="fas fa-calendar-alt"></i> Schedule</a>
                 <a href="/diet"><i class="fas fa-utensils"></i> Nutrition</a>
-                <a href="/profile" class="profile-link">
+                <a href="/bmi" class="profile-link">
                     <i class="fas fa-user"></i>
-                    <span>Profile</span>
+                    <span>BMI</span>
                 </a>
             </nav>
         </div>
@@ -600,7 +602,7 @@
                 <a href="/diet" class="btn btn-secondary">
                     <i class="fas fa-utensils"></i> Nutrition Plans
                 </a>
-                <a href="/goals" class="btn btn-accent">
+                <a href="/schedule" class="btn btn-accent">
                     <i class="fas fa-bullseye"></i> Set Goals
                 </a>
             </div>
@@ -649,7 +651,7 @@
             </div>
         </section>
 
-        <section class="chart-section">
+        <section class="chart-section" id="analytics-section">
             <div class="tracking-header">
                 <div class="tracking-icon">
                     <i class="fas fa-chart-line"></i>
@@ -663,6 +665,7 @@
                 <canvas id="activityChart"></canvas>
             </div>
         </section>
+        
 
         <section class="features-section">
             <div class="section-title">
@@ -743,6 +746,35 @@
     </footer>
 
     <script>
+        // Smooth scroll to analytics section
+document.querySelectorAll('.analytics-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.getElementById('analytics-section');
+        if (target) {
+            window.scrollTo({
+                top: target.offsetTop - 20, // Adjust offset as needed
+                behavior: 'smooth'
+            });
+            
+            // Optional: Add a highlight animation
+            anime({
+                targets: target,
+                backgroundColor: ['rgba(30, 39, 46, 0.7)', 'rgba(0, 168, 255, 0.1)'],
+                duration: 1000,
+                easing: 'easeInOutQuad',
+                complete: function() {
+                    anime({
+                        targets: target,
+                        backgroundColor: 'rgba(30, 39, 46, 0.7)',
+                        duration: 1000,
+                        easing: 'easeInOutQuad'
+                    });
+                }
+            });
+        }
+    });
+});
         // Initialize charts
         document.addEventListener('DOMContentLoaded', function() {
             // Activity Chart

@@ -38,17 +38,15 @@ function isAuthenticated(req, res, next) {
 const authRoutes = require("./routes/authRoutes");
 const workoutRoutes = require("./routes/workoutRoutes");
 const dietRoutes = require("./routes/dietRoutes");
- 
 const scheduleRoutes = require("./routes/scheduleRoutes");
- 
+const bmiRoutes = require("./routes/bmiRoutes"); // Add BMI routes
 
 // Routes
 app.use("/auth", authRoutes);
 app.use("/workouts", isAuthenticated, workoutRoutes);
 app.use("/diet", isAuthenticated, dietRoutes);
- 
 app.use("/schedule", isAuthenticated, scheduleRoutes);
- 
+app.use("/bmi", isAuthenticated, bmiRoutes); // Add BMI route
 
 // Home route
 app.get("/", isAuthenticated, (req, res) => {
@@ -57,8 +55,6 @@ app.get("/", isAuthenticated, (req, res) => {
         currentPage: 'home'
     });
 });
-
- 
 
 // Logout
 app.get("/logout", (req, res) => {
@@ -79,7 +75,6 @@ app.use((err, req, res, next) => {
     });
 });
 
-
 // 404 Handler
 app.use((req, res) => {
     res.status(404).render("error", { 
@@ -87,6 +82,8 @@ app.use((req, res) => {
         currentPage: 'error'
     });
 });
+ 
+
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
