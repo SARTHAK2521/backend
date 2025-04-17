@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack Pro | Schedule</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General Body and Layout Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header Styling */
+        header {
+            background-color:  #00a8ff;
+            color: #fff;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            margin-right: 0.8rem;
+        }
+
+        .logo-text h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a.active {
+            color: #00A8FF;
+            font-weight: bold;
+        }
+
+        .profile-link {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-link span {
+            margin-left: 0.5rem;
+        }
+
+        /* Schedule Page Styling */
+        .schedule-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .calendar {
+            background: rgba(30, 39, 46, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .day-card {
+            background: rgba(44, 62, 80, 0.7);
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+
+        .workout-item {
+            background: rgba(0, 168, 255, 0.1);
+            border-left: 3px solid #00A8FF;
+            padding: 0.8rem;
+            margin-bottom: 0.8rem;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .add-workout {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .add-workout button {
+            background: #00A8FF;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .add-workout button:hover {
+            background: #0088CC;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: #2C3E50;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            color: #fff;
+        }
+
+        .close-modal {
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: #ccc;
+    
+ 
+          
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <div class="logo-text">
+                    <h1>FitTrack Pro</h1>
+                    <p>Your personal fitness companion</p>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="/"><i class="fas fa-home"></i> Home</a>
+                <a href="#"><i class="fas fa-chart-line"></i> Analytics</a>
+                <a href="/schedule"><i class="fas fa-calendar-alt"></i> Schedule</a>
+                <a href="/diet"><i class="fas fa-utensils"></i> Nutrition</a>
+                <a href="/profile" class="profile-link">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+      
+
+    <main>
+        <section class="welcome-section">
+            <h1>Your Schedule, <span class="username"><%= username %></span></h1>
+            <p>Plan and track your weekly workouts</p>
+        </section>
+
+        <section class="schedule-container">
+            <div class="calendar">
+                <div class="calendar-header">
+                    <h2>This Week's Plan</h2>
+                </div>
+                
+                <div class="days-grid">
+                    <% const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; %>
+                    <% days.forEach(day => { %>
+                        <div class="day-card">
+                            <h3><%= day %></h3>
+                            <div class="workouts-list">
+                                <% workouts.filter(w => w.day.toLowerCase() === day.toLowerCase()).forEach(workout => { %>
+                                    <div class="workout-item">
+                                        <h4><%= workout.type.charAt(0).toUpperCase() + workout.type.slice(1) %></h4>
+                                        <p><%= workout.notes %></p>
+                                        <div class="workout-meta">
+                                            <span><%= workout.duration %> minutes</span>
+                                            <form action="/schedule/delete/<%= workout.id %>" method="POST" style="display: inline;">
+                                                <button type="submit" class="delete-workout">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                <% }); %>
+                                <div class="add-workout">
+                                    <button class="btn btn-primary" onclick="openAddWorkoutModal('<%= day %>')">
+                                        <i class="fas fa-plus"></i> Add Workout
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Workout Modal -->
+    <div class="modal" id="addWorkoutModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Add Workout for <span id="modal-day"></span></h2>
+            <form id="workout-form" action="/schedule/add" method="POST">
+                <input type="hidden" name="day" id="workout-day">
+                <div class="form-group">
+                    <label for="workout-type">Workout Type</label>
+                    <select name="type" id="workout-type" required>
+                        <option value="">Select type</option>
+                        <option value="cardio">Cardio</option>
+                        <option value="strength">Strength</option>
+                        <option value="flexibility">Flexibility</option>
+                        <option value="hiit">HIIT</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="workout-duration">Duration (minutes)</label>
+                    <input type="number" name="duration" id="workout-duration" min="5" max="180" required>
+                </div>
+                <div class="form-group">
+                    <label for="workout-notes">Notes</label>
+                    <textarea name="notes" id="workout-notes" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Workout</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function openAddWorkoutModal(day) {
+            document.getElementById('modal-day').textContent = day;
+            document.getElementById('workout-day').value = day;
+            document.getElementById('addWorkoutModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('addWorkoutModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('addWorkoutModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

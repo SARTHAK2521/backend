@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Push-ups",
+    "duration": "10 min",
+    "calories": 100
+  },
+  {
+    "name": "dead lift",
+    "duration": "30",
+    "type": "Strength"
+  },
+  {
+    "name": "Bicep curl",
+    "duration": "15",
+    "type": "Strength"
+  },
+  {
+    "name": "jumping jacks",
+    "duration": "20",
+    "type": "cardio"
+  },
+  {
+    "name": "Sarthak Joshi",
+    "duration": "10",
+    "type": "cardio"
+  },
+  {
+    "name": "leg press",
+    "duration": "20",
+    "type": "strength"
+  },
+  {
+    "name": "bicep",
+    "duration": "10",
+    "type": "strength"
+  },
+  {
+    "name": "running",
+    "duration": "30",
+    "type": "cardio"
+  },
+  {
+    "name": "jump",
+    "duration": "5",
+    "type": "cardio"
+  }
+]

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Signup</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1f0894, #099d78);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .auth-container {
+            display: flex;
+            width: 800px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .auth-form {
+            flex: 1;
+            padding: 40px;
+            text-align: center;
+            width: 50%; 
+            transition: transform 0.5s ease;
+        }
+
+        .auth-form h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .auth-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; 
+        }
+
+        .auth-form button {
+            width: 100%;
+            padding: 10px;
+            background: #ff7e5f;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px; 
+        }
+
+        .auth-form button:hover {
+            background: #feb47b;
+        }
+
+        .auth-form p {
+            margin: 20px 0;
+            color: #666;
+        }
+
+        .auth-form a {
+            color: #ff7e5f;
+            text-decoration: none;
+        }
+
+        .auth-form a:hover {
+            text-decoration: underline;
+        }
+
+        .welcome-panel {
+            flex: 1;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 50%; 
+            transition: transform 0.5s ease;
+        }
+
+        .welcome-panel h2 {
+            margin-bottom: 20px;
+        }
+
+        .welcome-panel p {
+            margin-bottom: 30px;
+        }
+
+        .welcome-panel button {
+            padding: 10px 20px;
+            background: white;
+            border: none;
+            border-radius: 5px;
+            color: #ff7e5f;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .welcome-panel button:hover {
+            background: #f0f0f0;
+        }
+
+        .error-message {
+            color: red;
+            margin-bottom: 20px;
+        }
+
+    
+        .auth-container.toggle .welcome-panel {
+            transform: translateX(-100%);
+        }
+
+        .auth-container.toggle .auth-form {
+            transform: translateX(-100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container" id="authContainer">
+      
+        <div class="auth-form">
+            <h2>Login</h2>
+
+            <% if (error) { %>
+                <p class="error-message"><%= error %></p>
+            <% } %>
+
+            <form action="/auth/login" method="POST">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+
+            <p>Don't have an account? <a href="#" onclick="toggleForm()">Sign Up</a></p>
+        </div>
+
+       
+        <div class="welcome-panel">
+            <h2>Hello, Friend!</h2>
+            <p>Enter your personal details and start your journey with us</p>
+            <button onclick="toggleForm()">Sign Up</button>
+        </div>
+
+       
+        <div class="auth-form" style="position: absolute; top: 0; left: 100%; width: 50%;">
+            <h2>Sign Up</h2>
+
+            <% if (error) { %>
+                <p class="error-message"><%= error %></p>
+            <% } %>
+
+            <form action="/auth/signup" method="POST">
+                <input type="text" name="username" placeholder="Choose Username" required>
+                <input type="password" name="password" placeholder="Choose Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+
+            <p>Already have an account? <a href="#" onclick="toggleForm()">Sign In</a></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm() {
+            const authContainer = document.getElementById('authContainer');
+            authContainer.classList.toggle('toggle');
+        }
+    </script>
+</body>
+</html>
